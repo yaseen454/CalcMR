@@ -1,0 +1,212 @@
+[
+ {
+   "Rank Name": "Unranked",
+   "Rank Number": 0,
+   "Next Rank Requirement": 2500,
+   "Total XP Required": 0
+ },
+ {
+   "Rank Name": "Initiate",
+   "Rank Number": 1,
+   "Next Rank Requirement": 7500,
+   "Total XP Required": 2500
+ },
+ {
+   "Rank Name": "Silver Initiate",
+   "Rank Number": 2,
+   "Next Rank Requirement": 12500,
+   "Total XP Required": 10000
+ },
+ {
+   "Rank Name": "Gold Initiate",
+   "Rank Number": 3,
+   "Next Rank Requirement": 17500,
+   "Total XP Required": 22500
+ },
+ {
+   "Rank Name": "Novice",
+   "Rank Number": 4,
+   "Next Rank Requirement": 22500,
+   "Total XP Required": 40000
+ },
+ {
+   "Rank Name": "Silver Novice",
+   "Rank Number": 5,
+   "Next Rank Requirement": 27500,
+   "Total XP Required": 62500
+ },
+ {
+   "Rank Name": "Gold Novice",
+   "Rank Number": 6,
+   "Next Rank Requirement": 32500,
+   "Total XP Required": 90000
+ },
+ {
+   "Rank Name": "Disciple",
+   "Rank Number": 7,
+   "Next Rank Requirement": 37500,
+   "Total XP Required": 122500
+ },
+ {
+   "Rank Name": "Silver Disciple",
+   "Rank Number": 8,
+   "Next Rank Requirement": 42500,
+   "Total XP Required": 160000
+ },
+ {
+   "Rank Name": "Gold Disciple",
+   "Rank Number": 9,
+   "Next Rank Requirement": 47500,
+   "Total XP Required": 202500
+ },
+ {
+   "Rank Name": "Seeker",
+   "Rank Number": 10,
+   "Next Rank Requirement": 52500,
+   "Total XP Required": 250000
+ },
+ {
+   "Rank Name": "Silver Seeker",
+   "Rank Number": 11,
+   "Next Rank Requirement": 57500,
+   "Total XP Required": 302500
+ },
+ {
+   "Rank Name": "Gold Seeker",
+   "Rank Number": 12,
+   "Next Rank Requirement": 62500,
+   "Total XP Required": 360000
+ },
+ {
+   "Rank Name": "Hunter",
+   "Rank Number": 13,
+   "Next Rank Requirement": 67500,
+   "Total XP Required": 422500
+ },
+ {
+   "Rank Name": "Silver Hunter",
+   "Rank Number": 14,
+   "Next Rank Requirement": 72500,
+   "Total XP Required": 490000
+ },
+ {
+   "Rank Name": "Gold Hunter",
+   "Rank Number": 15,
+   "Next Rank Requirement": 77500,
+   "Total XP Required": 562500
+ },
+ {
+   "Rank Name": "Eagle",
+   "Rank Number": 16,
+   "Next Rank Requirement": 82500,
+   "Total XP Required": 640000
+ },
+ {
+   "Rank Name": "Silver Eagle",
+   "Rank Number": 17,
+   "Next Rank Requirement": 87500,
+   "Total XP Required": 722500
+ },
+ {
+   "Rank Name": "Gold Eagle",
+   "Rank Number": 18,
+   "Next Rank Requirement": 92500,
+   "Total XP Required": 810000
+ },
+ {
+   "Rank Name": "Tiger",
+   "Rank Number": 19,
+   "Next Rank Requirement": 97500,
+   "Total XP Required": 902500
+ },
+ {
+   "Rank Name": "Silver Tiger",
+   "Rank Number": 20,
+   "Next Rank Requirement": 102500,
+   "Total XP Required": 1000000
+ },
+ {
+   "Rank Name": "Gold Tiger",
+   "Rank Number": 21,
+   "Next Rank Requirement": 107500,
+   "Total XP Required": 1102500
+ },
+ {
+   "Rank Name": "Dragon",
+   "Rank Number": 22,
+   "Next Rank Requirement": 112500,
+   "Total XP Required": 1210000
+ },
+ {
+   "Rank Name": "Silver Dragon",
+   "Rank Number": 23,
+   "Next Rank Requirement": 117500,
+   "Total XP Required": 1322500
+ },
+ {
+   "Rank Name": "Gold Dragon",
+   "Rank Number": 24,
+   "Next Rank Requirement": 122500,
+   "Total XP Required": 1440000
+ },
+ {
+   "Rank Name": "Sage",
+   "Rank Number": 25,
+   "Next Rank Requirement": 127500,
+   "Total XP Required": 1562500
+ },
+ {
+   "Rank Name": "Silver Sage",
+   "Rank Number": 26,
+   "Next Rank Requirement": 132500,
+   "Total XP Required": 1690000
+ },
+ {
+   "Rank Name": "Gold Sage",
+   "Rank Number": 27,
+   "Next Rank Requirement": 137500,
+   "Total XP Required": 1822500
+ },
+ {
+   "Rank Name": "Master",
+   "Rank Number": 28,
+   "Next Rank Requirement": 142500,
+   "Total XP Required": 1960000
+ },
+ {
+   "Rank Name": "Middle Master",
+   "Rank Number": 29,
+   "Next Rank Requirement": 147500,
+   "Total XP Required": 2102500
+ },
+ {
+   "Rank Name": "True Master",
+   "Rank Number": 30,
+   "Next Rank Requirement": 147500,
+   "Total XP Required": 2250000
+ },
+ {
+   "Rank Name": "Legendary 1",
+   "Rank Number": 31,
+   "Next Rank Requirement": 147500,
+   "Total XP Required": 2397500
+ },
+ {
+   "Rank Name": "Legendary 2",
+   "Rank Number": 32,
+   "Next Rank Requirement": 147500,
+   "Total XP Required": 2545000
+ },
+ {
+   "Rank Name": "Legendary 3",
+   "Rank Number": 33,
+   "Next Rank Requirement": 147500,
+   "Total XP Required": 2692500
+ },
+ {
+   "Rank Name": "Legendary 4",
+   "Rank Number": 34,
+   "Next Rank Requirement": 147500,
+   "Total XP Required": 2840000
+ }
+]

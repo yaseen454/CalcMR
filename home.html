@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CalcMR: Warframe Mastery Level Up Calculator</title>
+        <link rel="icon" type="image/x-icon" href="./data/favicon.ico">
+        <style>
+            /* Global styles */
+            body {
+                background: linear-gradient(135deg, #001220 0%, #2d2d2d 100%);
+                color: #e0e0e0;
+                font-family: 'Roboto', sans-serif;
+                margin: 0;
+                padding: 40px 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                min-height: 100vh;
+                overflow-x: hidden;
+            }
+
+            h1 {
+                color: #00ccff;
+                font-size: 2em;
+                margin-bottom: 30px;
+                font-weight: 500;
+                letter-spacing: 1px;
+                text-align: center;
+                width: 100%;
+            }
+
+            /* Top Ribbon (Navigation) */
+            .top-ribbon {
+                width: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                padding: 10px 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 1000;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 20px;
+            }
+
+            .nav-links a {
+                color: #00ccff;
+                text-decoration: none;
+                font-size: 1.1em;
+                font-weight: 500;
+                transition: color 0.3s;
+            }
+
+            .nav-links a:hover {
+                color: #ff6600;
+            }
+
+            .github-link {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                margin-right: 25px; /* Move logo closer to right edge */
+            }
+
+            .github-logo {
+                width: 24px;
+                height: 24px;
+                filter: invert(1); /* Turns black logo white */
+                transition: transform 0.3s;
+            }
+
+            .github-logo:hover {
+                transform: scale(1.2);
+            }
+
+            /* Website name above title */
+            .website-name {
+                color: #d4c468; /* Gold for Warframe theme */
+                font-size: 1.3em; /* Reduced for closer spacing to title */
+                font-family: 'Orbitron', sans-serif; /* Unique, modern font for Warframe theme */
+                font-weight: 600; /* Slightly bolder for emphasis */
+                text-align: center;
+                margin-top: 70px; /* Increased to avoid overlap with ribbon */
+                margin-bottom: 10px; /* Adjusted to bring closer to title */
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                text-shadow: 0 0 5px rgba(255, 215, 0, 0.5); /* Subtle gold glow */
+            }
+
+            /* Website logo above title */
+            .website-logo {
+                display: block;
+                margin-top: 70px; /* Match previous margin to avoid overlap with ribbon */
+                margin-bottom: 10px; /* Adjusted to bring closer to title */
+                text-align: center;
+            }
+
+            .website-logo img {
+                max-width: 200px; /* Adjust based on your logo size */
+                height: auto; /* Maintain aspect ratio */
+                filter: drop-shadow(0 0 5px rgba(61, 187, 241, 0.5)); /* Subtle gold glow to match theme */
+            }
+
+            /* Input and button container */
+            .input-container {
+                display: flex;
+                gap: 15px;
+                align-items: center;
+                background: rgba(0, 0, 0, 0.7);
+                padding: 15px 25px;
+                border-radius: 8px;
+                margin-bottom: 25px;
+                width: 100%;
+                max-width: 450px;
+            }
+
+            input[type="text"] {
+                padding: 10px;
+                font-size: 1em;
+                background: #333;
+                color: #fff;
+                border: 1px solid #444;
+                border-radius: 5px;
+                outline: none;
+                flex: 1;
+                transition: border-color 0.3s;
+            }
+
+            input[type="text"]:focus {
+                border-color: #00ccff;
+            }
+
+            button {
+                padding: 10px 20px;
+                font-size: 1em;
+                background: #00ccff;
+                color: #1a1a1a;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-weight: 500;
+                transition: background 0.3s;
+            }
+
+            button:hover {
+                background: #ff6600;
+            }
+
+            /* Fixed Slider styling on the left */
+            .slider-container {
+                position: fixed;
+                top: 150px; /* Position below ribbon (60px) + website-name margin (70px) + padding */
+                left: 20px; /* Align with left edge, with padding */
+                width: 100px; /* Fixed width for consistency */
+                background: rgba(0, 0, 0, 0.7);
+                padding: 15px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+                z-index: 900; /* Below ribbon (z-index: 1000) but above content */
+                text-align: left;
+            }
+
+            label {
+                color: #e0e0e0;
+                font-size: 1.1em;
+                margin-bottom: 10px;
+                display: block;
+                font-weight: 400;
+                position: relative;
+            }
+
+            label:hover::after {
+                content: "Adjusts the percentage of XP from Weapons vs. Deployables, impacting item counts in results.";
+                position: absolute;
+                background: #333;
+                color: #e0e0e0;
+                padding: 5px 10px;
+                border-radius: 4px;
+                font-size: 0.9em;
+                top: -35px; /* Position above the label */
+                left: 100%; /* Position to the right of the label */
+                transform: translateX(0); /* No horizontal shift */
+                white-space: nowrap;
+                z-index: 10;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            }
+
+            input[type="range"] {
+                -webkit-appearance: none;
+                width: 100%;
+                height: 6px;
+                background: #444;
+                border-radius: 3px;
+                outline: none;
+                transition: background 0.3s;
+            }
+
+            input[type="range"]::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                width: 16px;
+                height: 16px;
+                background: #00ccff;
+                border-radius: 50%;
+                cursor: pointer;
+                transition: background 0.3s;
+            }
+
+            input[type="range"]::-webkit-slider-thumb:hover {
+                background: #ff6600;
+            }
+
+            input[type="range"]:focus {
+                background: #555;
+            }
+
+            #distValue {
+                color: #00ccff;
+                font-weight: 500;
+            }
+
+            /* Main content (results) */
+            .content {
+                width: 100%;
+                max-width: 900px;
+                margin-top: 50px; /* Adjust for ribbon, website-name, and fixed slider */
+            }
+
+            /* Section headers (OVERVIEW and ITEMS NEEDED) */
+            .section-header {
+                color: #d4c468;
+                font-size: 1.5em;
+                font-weight: 500;
+                text-align: center;
+                margin: 20px 0;
+                position: relative;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+
+            .section-header::before, .section-header::after {
+                content: '';
+                position: absolute;
+                width: 100px;
+                height: 2px;
+                background: #ffd700;
+                opacity: 0.3;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .section-header::before {
+                left: -120px;
+            }
+
+            .section-header::after {
+                right: -120px;
+            }
+
+            /* Summary text styling */
+            .summary-text {
+                color: #ffd700;
+                font-size: 1.1em;
+                text-align: center;
+                margin-bottom: 20px;
+                line-height: 1.5;
+                padding: 10px;
+                background: rgba(0, 0, 0, 0.5);
+                border-radius: 5px;
+                box-shadow: 0 0 5px rgba(255, 215, 0, 0.2);
+            }
+
+            /* Distribution text styling */
+            .distribution-text {
+                color: #ffd700;
+                font-size: 1.1em;
+                text-align: center;
+                margin: 15px 0;
+                padding: 10px;
+                background: rgba(0, 0, 0, 0.5);
+                border-radius: 5px;
+                box-shadow: 0 0 5px rgba(255, 215, 0, 0.2);
+            }
+
+            /* Results section */
+            #results {
+                background: rgba(0, 0, 0, 0.7);
+                padding: 20px;
+                border-radius: 8px;
+                width: 100%;
+                overflow-x: auto;
+                line-height: 1.6;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                color: #e0e0e0;
+                font-size: 0.95em;
+            }
+
+            th, td {
+                padding: 12px;
+                text-align: center;
+                border: 1px solid #333;
+            }
+
+            th {
+                background: #2d2d2d;
+                color: #00ccff;
+                font-weight: 500;
+                position: sticky;
+                top: 0; /* Freeze header rows */
+                z-index: 5; /* Ensure it stays above other rows */
+            }
+
+            tr:nth-child(even) {
+                background: #252525;
+            }
+
+            tr:hover {
+                background: #383838;
+                transition: background 0.2s;
+            }
+
+            /* Note section under results */
+            .note {
+                color: #e0e0e0;
+                font-size: 0.9em;
+                margin-top: 15px;
+                padding: 10px;
+                background: rgba(0, 0, 0, 0.5);
+                border-radius: 5px;
+                text-align: center;
+            }
+            @media (max-width: 800px) {
+                body {
+                    padding: 20px; /* Reduce padding for mobile */
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                .content {
+                    margin-top: 180px; /* Keep margin for fixed elements, adjust if needed */
+                    width: 100%;
+                    max-width: 100%; /* Full width on mobile */
+                    margin-left: 0; /* Remove left margin */
+                }
+
+                .slider-container {
+                    position: fixed;
+                    top: 120px; /* Adjust for smaller screens, below ribbon and website-name */
+                    left: 10px; /* Narrower left margin on mobile */
+                    width: 250px; /* Smaller width for mobile */
+                    z-index: 900;
+                }
+
+                .slider-container label:hover::after {
+                    top: -40px; /* Adjust tooltip position for mobile */
+                    left: 120%; /* Ensure tooltip is visible on the right */
+                }
+
+                .input-container {
+                    max-width: 100%; /* Full width on mobile */
+                    margin-bottom: 20px; /* Reduce margin for mobile */
+                }
+
+                table {
+                    font-size: 0.85em; /* Smaller font for mobile tables */
+                }
+
+                th, td {
+                    padding: 8px; /* Reduce padding for mobile table cells */
+                }
+
+                .note {
+                    font-size: 0.85em; /* Smaller note text for mobile */
+                    padding: 8px; /* Reduce padding for mobile */
+                }
+
+                .top-ribbon {
+                    padding: 10px 10px; /* Reduce padding for mobile */
+                }
+
+                .nav-links {
+                    gap: 10px; /* Reduce gap between nav links */
+                }
+
+                .github-link {
+                    margin-right: 10px; /* Adjust GitHub logo position for mobile */
+                }
+            }
+
+            @media (max-width: 480px) {
+                .slider-container {
+                    width: 200px; /* Even narrower on very small screens */
+                    left: 5px; /* Further reduce left margin */
+                }
+
+                .input-container {
+                    flex-direction: column; /* Stack input and button vertically on very small screens */
+                    gap: 10px; /* Reduce gap between input and button */
+                    padding: 10px; /* Reduce padding */
+                }
+
+                input[type="text"], button {
+                    width: 100%; /* Full width for input and button on very small screens */
+                }
+
+                h1 {
+                    font-size: 1.5em; /* Smaller title on very small screens */
+                }
+
+                .website-name {
+                    font-size: 1.1em; /* Smaller website name on very small screens */
+                    margin-top: 60px; /* Adjust for smaller screens */
+                }
+            }
+        </style>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="top-ribbon">
+            <div class="nav-links">
+                <a href="home.html">Home</a>
+                <a href="about.html">About</a>
+            </div>
+            <a href="https://github.com/your-username/your-repo" target="_blank" class="github-link">
+                <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" class="github-logo">
+            </a>
+        </nav>
+        <div class="website-logo">
+            <img src="./data/calc-mr-logo.jpeg" alt="CalcMR Logo">
+        </div>
+        <h1>Warframe Mastery Level Up Calculator</h1>
+        <div class="input-container">
+            Enter Current MR XP <input type="text" id="mrInput">
+            <button id="mrCalc">Calculate</button>
+        </div>
+        <div class="content">
+            <div id="results"></div>
+            <div class="note">
+                Note: Weapons include Primaries, Secondaries, Melees, etc. Deployables include Warframes, Sentinels, Companions, Archwings, and K-Drives. Other Mastery sources like Necramechs, Intrinsics and Missions have been disregarded for better calculations
+            </div>
+        </div>
+        <div class="slider-container">
+            <label for="distSlider">Weapon Distribution: <span id="distValue">50</span>%</label>
+            <input type="range" id="distSlider" min="0" max="100" value="50" step="1">
+        </div>
+        <script src="class.js"></script>
+        <script src="app.js"></script>
+    </body>
+</html>

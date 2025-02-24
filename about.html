@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>About CalcMR</title>
+        <link rel="icon" type="image/x-icon" href="./data/favicon.ico">
+        <style>
+            body {
+                background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+                color: #e0e0e0;
+                font-family: 'Roboto', sans-serif;
+                margin: 0;
+                padding: 40px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                min-height: 100vh;
+            }
+
+            h1 {
+                color: #00ccff;
+                font-size: 2em;
+                margin-bottom: 30px;
+                font-weight: 500;
+                letter-spacing: 1px;
+            }
+
+            /* Top Ribbon (Navigation) */
+            .top-ribbon {
+                width: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                padding: 10px 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 1000;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 20px;
+            }
+
+            .nav-links a {
+                color: #00ccff;
+                text-decoration: none;
+                font-size: 1.1em;
+                font-weight: 500;
+                transition: color 0.3s;
+            }
+
+            .nav-links a:hover {
+                color: #ff6600;
+            }
+
+            .github-link {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                margin-right: 25px; /* Adjusted to match home.html */
+            }
+
+            .github-logo {
+                width: 24px;
+                height: 24px;
+                filter: invert(1); /* Turns black logo white */
+                transition: transform 0.3s;
+            }
+
+            .github-logo:hover {
+                transform: scale(1.2);
+            }
+
+            /* Content */
+            .content {
+                background: rgba(0, 0, 0, 0.7);
+                padding: 20px;
+                border-radius: 8px;
+                width: 100%;
+                max-width: 800px;
+                line-height: 1.6;
+                margin-top: 60px; /* Adjust for fixed ribbon */
+            }
+        </style>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="top-ribbon">
+            <div class="nav-links">
+                <a href="home.html">Home</a>
+                <a href="about.html">About</a>
+            </div>
+            <a href="https://github.com/your-username/your-repo" target="_blank" class="github-link">
+                <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" class="github-logo">
+            </a>
+        </nav>
+        <h1>About CalcMR</h1>
+        <div class="content">
+        <h2>Hello!</h2>
+            <p>Welcome to CalcMR a Warframe Mastery Level Up Calculator! This tool helps Warframe players calculate their current Mastery Rank, track progress toward Legendary Rank 4 (LR4), and determine the optimal number of weapons and deployables needed to reach higher ranks based on XP distribution.</p>
+            <p>Enter your current Mastery Rank XP, adjust the weapon-to-deployable distribution, and get detailed insights into your progress and item requirements.  Weapons include Primaries, Secondaries, Melees, etc (Any weapon with 3000 XP at max rank: the number is actually 3058 XP on average if we're counting kuva and tenet weapons). Deployables include Warframes, Sentinels, Companions, Archwings, and K-Drives (6000 XP items at max rank). Other Mastery sources like Necramechs, Intrinsics and Missions have been disregarded for better calculations, they are more or less useful. This calculator is designed to assist both new and veteran players in planning their Mastery Rank journey.</p>
+            <p>For feedback, issues, or contributions, visit my GitHub repository linked at the top of the page.</p>
+        <h2>How to use CalcMR</h2>
+        <img src="./data/mr-guide.png" width="550" height="250">
+            <p>it is simple, all you need to do is open Warframe and enter your current MR XP (no commas).
+            </p>
+        <h2>Why this tool?</h2>
+            <p>I mainly made CalcMR for fun, I also made it to have a fast and clear idea of how much equipment I needed to reach certain Mastery Levels, it's quick and easy requiring no effort or setup.</p>
+        </div>
+    </body>
+</html>
