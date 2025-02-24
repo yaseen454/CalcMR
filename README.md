@@ -57,7 +57,7 @@ npm install -g http-server
 
 `npx http-server` or `http-server`
 
-- Open your browser and navigate to `http://localhost:8080/web-page.html`.
+- Open your browser and navigate to `http://localhost:8080/home.html`.
 
 3. **Access the Live Version**:
 
