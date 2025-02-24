@@ -1,4 +1,4 @@
-# Warframe Mastery Rank Calculator (calcMr)
+# Warframe Mastery Rank Calculator (CalcMR)
 
 This is a web-based application that helps Warframe players calculate their current Mastery Rank (MR), track progress toward Legendary Rank 4 (LR4), and determine the optimal number of weapons and deployables needed to reach higher ranks based on a customizable XP distribution.
 
