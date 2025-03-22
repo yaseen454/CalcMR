@@ -50,17 +50,17 @@ class MasteryAccount {
     }
 
     totalMRCompletion() {
-        const maxXP = 2840000;
+        const maxXP = 2987500;
         return Math.round((this.current_xp / maxXP) * 100, 2);
     }
 
     summary() {
         let output = '<div class="summary-text">';
         if (this.current_xp >= 2840000) {
-            output += 'You have achieved maximum mastery (LR4)';
+            output += 'You have achieved maximum mastery (LR5)';
         } else {
             output += `You are: ${this.name}: Mastery Rank ${this.rank}`;
-            output += `<br>Achieved ${this.totalMRCompletion()}% MR completion (LR4)`;
+            output += `<br>Achieved ${this.totalMRCompletion()}% MR completion (LR5)`;
         }
         output += '</div>';
         return output;
@@ -71,8 +71,8 @@ class MasteryAccount {
         const total_xp_needed = this.xpNeeded(target_rank);
         if (total_xp_needed <= 0) return { weapons: 0, deployables: 0, weaponsXP: 0, deployablesXP: 0, totalXPAchieved: 0 };
 
-        const itemXP = { 'Weapons': 3058, 'Deployables': 6000 };
-        const maxCounts = { 'Weapons': 619, 'Deployables': 157 };
+        const itemXP = { 'Weapons': 3077, 'Deployables': 6000 };
+        const maxCounts = { 'Weapons': 635, 'Deployables': 159 };
 
         let weaponsXP = total_xp_needed * weapon_distribution;
         let weapons = Math.min(Math.ceil(weaponsXP / itemXP['Weapons']), maxCounts['Weapons']);
