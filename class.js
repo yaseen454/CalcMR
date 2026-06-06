@@ -71,8 +71,8 @@ class MasteryAccount {
         const total_xp_needed = this.xpNeeded(target_rank);
         if (total_xp_needed <= 0) return { weapons: 0, deployables: 0, weaponsXP: 0, deployablesXP: 0, totalXPAchieved: 0 };
 
-        const itemXP = { 'Weapons': 3077, 'Deployables': 6000 };
-        const maxCounts = { 'Weapons': 635, 'Deployables': 159 };
+        const itemXP = { 'Weapons': 3079, 'Deployables': 6000 };
+        const maxCounts = { 'Weapons': 662, 'Deployables': 167 };
 
         let weaponsXP = total_xp_needed * weapon_distribution;
         let weapons = Math.min(Math.ceil(weaponsXP / itemXP['Weapons']), maxCounts['Weapons']);
